@@ -1,0 +1,74 @@
+#-----------------------------------------------------------------------------
+#   Copyright (c) 2012 Bryce Johnson
+#
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+#-----------------------------------------------------------------------------
+#
+# 1.) Place this file in your hieradata directory
+# 2.) Modify the database settings below according to your setup
+#
+# Atlassian confluence Git Enterprise Source Control Server
+confluence_name: confluence
+confluence_version: 4.2.12
+confluence_package_format: zip
+
+# Directory where the webapp will run from
+confluence_install_dir: /opt/confluence
+# If you can put this on another filesystem, and even better, a fs that's
+# on another physical disk, you will be happier, but not required
+confluence_home_dir: /opt/confluence-home
+
+# Database configuration - please change these according to your setup
+# Comment out or uncomment for your db product as this value is also
+# overloaded as the jdbc driver db
+confluence_db: postgresql
+#confluence_db: mysql
+#confluence_db: oracle
+
+confluence_dbtype: postgres72
+#confluence_dbtype: mysql
+
+confluence_dbdriver: org.postgresql.Driver
+#confluence_dbdriver: com.mysql.jdbc.Driver
+
+# Change these values to your confluence database credentials
+confluence_dbuser: confluenceadm
+confluence_dbpassword: confluenceadm
+
+confluence_dbname: confluence
+# Change port depending on your db product
+confluence_dbport: 5432
+#confluence_dbport: 3306
+#confluence_dbport: 1521
+
+# this is my trial license.  you need to change this to your existing.
+# yes this shit is totally lame as it should be kept in the database
+confluence_license_hash: pMmmVEWFgCTSCnpnWHagbXIwRqNbwJXagvTACDQjjuPRHvmi2Ku0oc1uNE57PRq4SfytOd2Koj4QzoEVu4cEGtKXwEpP
+confluence_license_message: oMqpqwjWEtWLpqKLgPMTdDxErqIFrSTjvtQSdLEnKShXJfwIjgPPMKrbWMFVdotTcLNGUSjUjbjsuuApigrfHuIbBiXJPsHhMkPgoxboxlHGDpubNqhdcLSHWjnfjEmpJUkxVUcXUlMWTqXFlXgfxwGXSjsKKlSGQGHcrVfVNoRSLpAvUdwgOtnqsUroDEXHjeakwKiowpCOWmbGWfKXeTTAlMSFBSdSxufQsiChjDNVMDBNMKNgjNnxtRPcMoKrsEiTDWKGIAEwnithbPkrXCLIDpOAxJkkMLmUcDpDECAFuQjGVh2mK5Vpf2xEaI8J2JqmTj7qkFx9fr6QKo7ctVK9cOaGkz&gt;pEvx3QF23f8JaCPu8m8Mu8JXA0fhtUt6BUiR0617Od7P6vQZXXy8a7&lt;Y8T53YUBbBP1VQZ2ylt6525d1Sf3ml3Sbv2gMlqKiE03J510rTw9xGdB2hmEM7zSJ4rOalYsfGqoUCCjpFzs7Vjk9bN3oqRmLMq1vmbV3ZKLsH6xBSL320ByanIYXZMo4j1U0Eo&lt;zCPfpqXYzVJqf&lt;6VDYsObtODkh3hu9kw&gt;h&lt;7hsI1VF&lt;2sqGJ
+confluence_setup_server_id: BL6W-6FJV-9P47-LS5K
+
+# Change if your database isn't on localhost.  This module will only check
+# to make sure that the service is running and start it if it is not on
+# localhost db's only.  So if your remote database, which is suggested, isn't
+# available, that's your fault.
+confluence_dbserver: localhost
+
+# Tomcat configuration
+# TODO because I'm never a fan of the stock tomcat settings
+confluence_javahome: /opt/java/jdk1.6.0_33
+confluence_jvm_xmx: 1024m
+confluence_jvm_optional: -XX:-HeapDumpOnOutOfMemoryError
+#confluence_jvm_optional: -XX:NewSize=256m -XX:MaxNewSize=256m -XX:SurvivorRatio=16
+# the New and SR figures are purely optional
+# for heap dumps add -XX:-HeapDumpOnOutOfMemoryError
+# by default confluence has 256m permgen which is a good setting to go with
