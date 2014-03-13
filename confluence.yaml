@@ -57,6 +57,9 @@ confluence_license_hash: pMmmVEWFgCTSCnpnWHagbXIwRqNbwJXagvTACDQjjuPRHvmi2Ku0oc1
 confluence_license_message: oMqpqwjWEtWLpqKLgPMTdDxErqIFrSTjvtQSdLEnKShXJfwIjgPPMKrbWMFVdotTcLNGUSjUjbjsuuApigrfHuIbBiXJPsHhMkPgoxboxlHGDpubNqhdcLSHWjnfjEmpJUkxVUcXUlMWTqXFlXgfxwGXSjsKKlSGQGHcrVfVNoRSLpAvUdwgOtnqsUroDEXHjeakwKiowpCOWmbGWfKXeTTAlMSFBSdSxufQsiChjDNVMDBNMKNgjNnxtRPcMoKrsEiTDWKGIAEwnithbPkrXCLIDpOAxJkkMLmUcDpDECAFuQjGVh2mK5Vpf2xEaI8J2JqmTj7qkFx9fr6QKo7ctVK9cOaGkz&gt;pEvx3QF23f8JaCPu8m8Mu8JXA0fhtUt6BUiR0617Od7P6vQZXXy8a7&lt;Y8T53YUBbBP1VQZ2ylt6525d1Sf3ml3Sbv2gMlqKiE03J510rTw9xGdB2hmEM7zSJ4rOalYsfGqoUCCjpFzs7Vjk9bN3oqRmLMq1vmbV3ZKLsH6xBSL320ByanIYXZMo4j1U0Eo&lt;zCPfpqXYzVJqf&lt;6VDYsObtODkh3hu9kw&gt;h&lt;7hsI1VF&lt;2sqGJ
 confluence_setup_server_id: BL6W-6FJV-9P47-LS5K
 
+# Allow this module to manage the main confluence configuration file
+confluence_manage_config: true
+
 # Change if your database isn't on localhost.  This module will only check
 # to make sure that the service is running and start it if it is not on
 # localhost db's only.  So if your remote database, which is suggested, isn't
