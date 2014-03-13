@@ -46,7 +46,7 @@ class confluence::install {
     require => [Exec['wget-confluence-package'],Exec['mkdirp-installdir']],
   }
 
-  file { '/etc/rc.d/init.d/confluence':
+  file { $confluence_init_path:
     content => template('confluence/etc/rc.d/init.d/confluence.erb'),
     mode    => '0755',
   }

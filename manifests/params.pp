@@ -52,15 +52,25 @@ class confluence::params {
   # TODO: maybe toss this into atlassian.yaml for hiera
   $downloadURL = "http://www.atlassian.com/software/${product}/downloads/binary/atlassian-${product}-${version}.${format}"
 
+  $tmpdir  = '/tmp'
+
   case $::osfamily {
     'Darwin' : {
       # HTFU macboy - go download and install wget
       $cmdwget = '/usr/local/bin/wget'
-      $tmpdir  = '/tmp'
+      $confluence_init_path = '/etc/rc.d/init.d/confluence'
+    }
+    'Redhat': {
+      $cmdwget = '/usr/bin/wget'
+      $confluence_init_path = '/etc/rc.d/init.d/confluence'
+    }
+    'Debian': {
+      $cmdwget = '/usr/bin/wget'
+      $confluence_init_path = '/etc/init.d/confluence'
     }
     default : {
       $cmdwget = '/usr/bin/wget'
-      $tmpdir  = '/tmp'
+      $confluence_init_path = '/etc/rc.d/init.d/confluence'
     }
   }
 }
