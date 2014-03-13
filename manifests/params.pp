@@ -41,6 +41,9 @@ class confluence::params {
   $dbdialect    = hiera('confluence_dbdialect')
   $dburl        = "jdbc:${db}://${dbserver}:${dbport}/${dbname}"
 
+  # Should this module manage the confluence configuraiton file?
+  $manage_config = hiera('confluence_manage_config')
+
   # JVM Settings
   $javahome     = hiera('confluence_javahome')
   $jvm_xmx      = hiera('confluence_jvm_xmx')
