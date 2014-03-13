@@ -19,7 +19,7 @@
 #
 # Atlassian confluence Git Enterprise Source Control Server
 confluence_name: confluence
-confluence_version: 4.2.12
+confluence_version: 5.4.3
 confluence_package_format: zip
 
 # Directory where the webapp will run from
@@ -35,7 +35,7 @@ confluence_db: postgresql
 #confluence_db: mysql
 #confluence_db: oracle
 
-confluence_dbtype: postgres72
+confluence_dbtype: postgres91
 #confluence_dbtype: mysql
 
 confluence_dbdriver: org.postgresql.Driver
