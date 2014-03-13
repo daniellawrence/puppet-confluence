@@ -1,4 +1,4 @@
-JAVA_OPTS="-Xms256m -Xmx<%= scope.lookupvar('confluence::params::jvm_xmx') %> -XX:MaxPermSize=256m $JAVA_OPTS -Djava.awt.headless=true "
+JAVA_OPTS="-Xms256m -Xmx<%= scope.lookupvar('confluence::params::jvm_xmx') %> -XX:MaxPermSize=256m $JAVA_OPTS -Djava.awt.headless=true <%= scope.lookupvar('confluence::params::jvm_xmx') %>"
 export JAVA_OPTS
 
 echo "If you encounter issues starting up Confluence Standalone, please see the Installation guide at http://confluence.atlassian.com/display/DOC/Confluence+Installation+Guide"
