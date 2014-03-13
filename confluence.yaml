@@ -65,7 +65,7 @@ confluence_dbserver: localhost
 
 # Tomcat configuration
 # TODO because I'm never a fan of the stock tomcat settings
-confluence_javahome: /opt/java/jdk1.6.0_33
+confluence_javahome: /usr/lib/jvm/java-7-openjdk-amd64/
 confluence_jvm_xmx: 1024m
 confluence_jvm_optional: -XX:-HeapDumpOnOutOfMemoryError
 #confluence_jvm_optional: -XX:NewSize=256m -XX:MaxNewSize=256m -XX:SurvivorRatio=16

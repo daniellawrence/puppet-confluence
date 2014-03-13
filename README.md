@@ -67,3 +67,35 @@ Please feel free to raise any issues here for fixes.  I'm happy to fix them
 up.  Also feel free to make a pull request for anything so I can hopefully
 get it in.
 
+### Example from zero to Running
+
+The below configuration will get you up and running on a new server as long as you have this confluence module as well as the excellent `puppetlabs/postgresql` module installed.
+It also assumes that you have dropped in the example `confluence.yaml` into hiera.
+
+```
+class local_confluence {
+  include confluence
+
+  # Install basic java jre
+  ensure_packages(['openjdk-7-jre-headless'])
+
+  class { 'postgresql::server':
+    ip_mask_deny_postgres_user => '0.0.0.0/32',
+    ip_mask_allow_all_users    => '127.0.0.1/32',
+    ipv4acls                   => ['local all postgres  trust'],
+  }
+
+  postgresql::server::role { 'confluence':
+    createdb      => true,
+    createrole    => true,
+    superuser     => true,
+    password_hash => postgresql_password('confluenceadm', 'confluenceadm')
+  }
+
+  postgresql::server::db { 'confluence':
+    user     => 'confluence',
+    password => postgresql_password('confluenceadm', 'confluenceadm')
+  }
+}
+```
+
