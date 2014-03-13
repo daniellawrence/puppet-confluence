@@ -18,16 +18,17 @@ class confluence::install {
   require confluence::params
 
   case $::osfamily {
-    'Darwin' : { # assuming you did download wget - ill maybe fix this and check for it
+    'Darwin' : {
+      # assuming you did download wget - ill maybe fix this and check for it
       exec { 'wget-confluence-package':
-        cwd     => "${confluence::params::tmpdir}",
+        cwd     => $confluence::params::tmpdir,
         command => "${confluence::params::cmdwget} --no-check-certificate ${confluence::params::downloadURL}",
         creates => "${confluence::params::tmpdir}/atlassian-${confluence::params::product}-${confluence::params::version}.${confluence::params::format}",
       }
     }
     default : {
       exec { 'wget-confluence-package':
-        cwd     => "${confluence::params::tmpdir}",
+        cwd     => $confluence::params::tmpdir,
         command => "${confluence::params::cmdwget} --no-check-certificate ${confluence::params::downloadURL}",
         creates => "${confluence::params::tmpdir}/atlassian-${confluence::params::product}-${confluence::params::version}.${confluence::params::format}",
       }
@@ -35,14 +36,14 @@ class confluence::install {
   }
 
   exec { 'mkdirp-installdir':
-    cwd     => "${confluence::params::tmpdir}",
+    cwd     => $confluence::params::tmpdir,
     command => "/bin/mkdir -p ${confluence::params::installdir}",
-    creates => "${confluence::params::installdir}",
+    creates => $confluence::params::installdir,
   }
   exec { 'unzip-confluence-package':
-    cwd     => "${confluence::params::installdir}",
+    cwd     => $confluence::params::installdir,
     command => "/usr/bin/unzip -o -d ${confluence::params::installdir} ${confluence::params::tmpdir}/atlassian-${confluence::params::product}-${confluence::params::version}.${confluence::params::format}",
-    creates => "${confluence::params::webappdir}",
+    creates => $confluence::params::webappdir,
     require => [Exec['wget-confluence-package'],Exec['mkdirp-installdir']],
   }
 

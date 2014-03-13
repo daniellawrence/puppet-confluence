@@ -18,9 +18,9 @@ class confluence::config{
   require confluence::params
 
   exec { 'mkdirp-homedir':
-    cwd     => "${confluence::params::tmpdir}",
+    cwd     => $confluence::params::tmpdir,
     command => "/bin/mkdir -p ${confluence::params::homedir}",
-    creates => "${confluence::params::homedir}"
+    creates => $confluence::params::homedir;
   }
 
   file { "${confluence::params::webappdir}/bin/setenv.sh":
@@ -35,14 +35,14 @@ class confluence::config{
     require => Class['confluence::install'],
   }
 
-  if "${confluence::params::db}" == 'postgresql' {
+  if $confluence::params::db == 'postgresql' {
     file { "${confluence::params::homedir}/confluence.cfg.xml":
       content => template('confluence/postgres.confluence.cfg.erb'),
       mode    => '0600',
       require => [Class['confluence::install'],Exec['mkdirp-homedir']],
     }
   }
-  if "${confluence::params::db}" == 'mysql' {
+  if $confluence::params::db == 'mysql' {
     file { "${confluence::params::homedir}/confluence.cfg.xml":
       content => template('confluence/mysql.confluence.cfg.erb'),
       mode    => '0600',

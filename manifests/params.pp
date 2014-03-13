@@ -26,7 +26,7 @@ class confluence::params {
 
   # License crap
   $license_hash    = hiera('confluence_license_hash')
-  $license_message = hiera('confluence_license_message') 
+  $license_message = hiera('confluence_license_message')
   $setup_server_id = hiera('confluence_setup_server_id')
 
   # Database Settings
@@ -38,7 +38,6 @@ class confluence::params {
   $dbport       = hiera('confluence_dbport')
   $dbdriver     = hiera('confluence_dbdriver')
   $dbtype       = hiera('confluence_dbtype')
-  $dbdialect    = hiera('confluence_dbdialect')
   $dburl        = "jdbc:${db}://${dbserver}:${dbport}/${dbname}"
 
   # JVM Settings
