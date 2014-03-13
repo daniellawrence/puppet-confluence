@@ -1,8 +1,5 @@
-
-# DONT USE THIS YET - NOT READY MASTER!!!
-
 # puppet-confluence
-Puppet module authored by Bryce Johnson
+Puppet module authored by Bryce Johnson & Daniel Lawrence
 
 ## Introduction
 
