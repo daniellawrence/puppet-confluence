@@ -12,7 +12,7 @@ puppet-confluence is a module for Atlassian's Collaboration Tool
 
 ### Operating System
 * MacOS: UNSUPPORTED
-* Linux:  RedHat (Debian untested)
+* Linux:  RedHat, Debian (& Ubuntu)
 * Windows:  UNSUPPORTED
 ### Databases
 * Postgres
