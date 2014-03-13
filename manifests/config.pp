@@ -35,16 +35,9 @@ class confluence::config{
     require => Class['confluence::install'],
   }
 
-  if "${confluence::params::db}" == 'postgresql' {
+  if $confluence::params::manage_config {
     file { "${confluence::params::homedir}/confluence.cfg.xml":
-      content => template('confluence/postgres.confluence.cfg.erb'),
-      mode    => '0600',
-      require => [Class['confluence::install'],Exec['mkdirp-homedir']],
-    }
-  }
-  if "${confluence::params::db}" == 'mysql' {
-    file { "${confluence::params::homedir}/confluence.cfg.xml":
-      content => template('confluence/mysql.confluence.cfg.erb'),
+      content => template('confluence/${confluence::params::db}.confluence.cfg.erb'),
       mode    => '0600',
       require => [Class['confluence::install'],Exec['mkdirp-homedir']],
     }
